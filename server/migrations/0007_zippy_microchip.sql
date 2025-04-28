@@ -1,0 +1,1 @@
+ALTER TABLE "email_token" ADD PRIMARY KEY ("identifier");
