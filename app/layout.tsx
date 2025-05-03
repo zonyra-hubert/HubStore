@@ -39,7 +39,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex-grow px-6 md:px-12 mx-auto max-6xl">
+          <div className="flex-grow px-6 md:px-12 mx-auto max-8xl">
             <Nav />
             <Toaster />
 
