@@ -6,16 +6,19 @@ import {
   Drawer,
   DrawerContent,
   DrawerHeader,
-  DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { motion, AnimatePresence } from "framer-motion";
 import CartItems from "./cart-items";
+import CartMessage from "./cart-message";
+import Payment from "./Payment";
+import OrderConfirmed from "./order-confirm";
+import CartProgress from "./cart-progress";
 
 export default function CartDrawer() {
-  const { cart } = useCartStore();
+  const { cart, checkoutProgress, cartOpen, setCartOpen } = useCartStore();
   return (
-    <Drawer>
+    <Drawer open={cartOpen} onOpenChange={setCartOpen}>
       <DrawerTrigger>
         <div className="relative px-2">
           <AnimatePresence>
@@ -33,13 +36,15 @@ export default function CartDrawer() {
           <ShoppingBag />
         </div>
       </DrawerTrigger>
-      <DrawerContent className="min-h-50vh">
+      <DrawerContent className="fixed bottom-0 left-0 max-h-[70vh] min-h-[50vh]">
         <DrawerHeader>
-          <DrawerTitle className="text-center">Cart Progress</DrawerTitle>
+          <CartMessage />
+          <CartProgress />
         </DrawerHeader>
         <div className="overflow-auto p-4">
-          {" "}
-          <CartItems />
+          {checkoutProgress === "cart-page" && <CartItems />}
+          {checkoutProgress === "payment-page" && <Payment />}
+          {checkoutProgress === "confirmation-page" && <OrderConfirmed />}
         </div>
       </DrawerContent>
     </Drawer>

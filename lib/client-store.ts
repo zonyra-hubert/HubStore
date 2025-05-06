@@ -16,14 +16,26 @@ export type CartItem = {
 
 export type CartSate = {
   cart: CartItem[];
+  checkoutProgress: "cart-page" | "payment-page" | "confirmation-page";
+  setCheckoutProgress: (
+    val: "cart-page" | "payment-page" | "confirmation-page"
+  ) => void;
   addToCart: (item: CartItem) => void;
   removeFromCart: (item: CartItem) => void;
+  clearCart: () => void;
+  cartOpen: boolean;
+  setCartOpen: (val: boolean) => void;
 };
 
 export const useCartStore = create<CartSate>()(
   persist(
     (set) => ({
       cart: [],
+      clearCart: () => set({ cart: [] }),
+      setCartOpen: (val) => set({ cartOpen: val }),
+      cartOpen: false,
+      checkoutProgress: "cart-page",
+      setCheckoutProgress: (val) => set((state) => ({ checkoutProgress: val })),
       addToCart: (item) =>
         set((state) => {
           const existingItem = state.cart.find(

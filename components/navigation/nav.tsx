@@ -11,7 +11,7 @@ export default async function Nav() {
   const session = await auth();
 
   return (
-    <header className=" py-12 shadow-xl">
+    <header className=" py-12 shadow-sm">
       <nav>
         <ul
           aria-label="Zonyra Hubert logo"
