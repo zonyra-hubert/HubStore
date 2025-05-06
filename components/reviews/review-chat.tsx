@@ -2,7 +2,7 @@
 
 import { ReviewsWithUser } from "@/lib/infer-types";
 import { Card, CardDescription, CardTitle } from "../ui/card";
-import Stars from "./stars";
+
 import { getReviewAverage } from "@/lib/reviewAverage";
 import { useMemo } from "react";
 import { Progress } from "@/components/ui/progress";

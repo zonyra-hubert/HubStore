@@ -30,6 +30,7 @@ const PaymentForm = ({ totalPrice }: { totalPrice: number }) => {
         toast.success(data.success);
         setCheckoutProgress("confirmation-page");
         clearCart();
+        console.log(errorMessage);
       }
     },
   });

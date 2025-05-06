@@ -35,7 +35,7 @@ export const useCartStore = create<CartSate>()(
       setCartOpen: (val) => set({ cartOpen: val }),
       cartOpen: false,
       checkoutProgress: "cart-page",
-      setCheckoutProgress: (val) => set((state) => ({ checkoutProgress: val })),
+      setCheckoutProgress: (val) => set(() => ({ checkoutProgress: val })),
       addToCart: (item) =>
         set((state) => {
           const existingItem = state.cart.find(

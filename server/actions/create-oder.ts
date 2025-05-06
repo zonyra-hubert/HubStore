@@ -34,7 +34,7 @@ export const createOrder = action(
             productVariantID: variantID,
           })
           .returning();
-        return orderProduct;
+        return { orderProduct };
       }
     );
     return { success: "Order has been added" };

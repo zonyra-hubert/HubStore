@@ -17,6 +17,7 @@ export const getVerificationTokenByEmail = async (email: string) => {
     });
     return verificationToken;
   } catch (error) {
+    console.log(error);
     return null;
   }
 };
@@ -132,6 +133,7 @@ export const generatePasswordResetToken = async (email: string) => {
       .returning();
     return passwordResetToken;
   } catch (e) {
+    console.log(e);
     return null;
   }
 };
@@ -158,6 +160,7 @@ export const generateTwoFactorToken = async (email: string) => {
       .returning();
     return twoFactorToken;
   } catch (e) {
+    console.log(e);
     return null;
   }
 };
