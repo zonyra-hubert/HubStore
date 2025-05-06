@@ -64,7 +64,9 @@ export default function ReviewsForm() {
     <Popover>
       <PopoverTrigger asChild>
         <div className="w-full">
-          <Button className="font-medium w-full">Leave a review</Button>
+          <Button variant={"secondary"} className="font-medium w-full">
+            Leave a review
+          </Button>
         </div>
       </PopoverTrigger>
       <PopoverContent>

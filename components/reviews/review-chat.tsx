@@ -27,7 +27,7 @@ export default function ReviewsChart({
 
   const totoalRating = getReviewAverage(reviews.map((r) => r.rating));
   return (
-    <Card className="flex flex-col rounded-md gap-4">
+    <Card className="flex flex-col rounded-md gap-4 p-4">
       <div className="flex flex-col gap-2">
         <CardTitle>Product Rating:</CardTitle>
 
