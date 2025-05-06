@@ -35,7 +35,7 @@ const Earnings = ({ totalOrders }: { totalOrders: TotalOrders[] }) => {
     if (filter === "month") {
       return monthly;
     }
-  }, [filter]);
+  }, [filter, chartItems]);
 
   const activeTotal = useMemo(() => {
     if (filter === "month") {
@@ -45,7 +45,7 @@ const Earnings = ({ totalOrders }: { totalOrders: TotalOrders[] }) => {
       );
     }
     return weeklyChart(chartItems).reduce((acc, item) => acc + item.revenue, 0);
-  }, [filter]);
+  }, [filter, chartItems]);
   return (
     <Card className="flex-1 shrink-0 h-full">
       <CardHeader>

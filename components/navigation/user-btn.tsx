@@ -36,7 +36,7 @@ export const UserButton = ({ user }: Session) => {
 
   useEffect(() => {
     setSwitchState();
-  }, []);
+  });
 
   if (user)
     return (

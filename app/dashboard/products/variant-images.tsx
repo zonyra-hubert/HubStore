@@ -40,7 +40,7 @@ const VariantImages = () => {
       <FormField
         control={control}
         name="variantImages"
-        render={({ field }) => (
+        render={({}) => (
           <FormItem>
             <FormLabel>Tags</FormLabel>
             <FormControl>

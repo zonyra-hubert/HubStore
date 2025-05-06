@@ -29,11 +29,11 @@ export const EmailVerificationForm = () => {
         router.push("/auth/login");
       }
     });
-  }, []);
+  }, [error, router, success, token]);
 
   useEffect(() => {
     handleVerification();
-  }, []);
+  }, [handleVerification]);
 
   return (
     <AuthCard
