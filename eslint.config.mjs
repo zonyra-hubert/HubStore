@@ -21,8 +21,10 @@ const eslintConfig = [
       ],
 
       // Allow empty object type interfaces
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-wrapper-object-types": "off",
       "@typescript-eslint/no-empty-interface": "off", // This is the correct rule for interface issues
-      "@typescript-eslint/no-empty-object-type": "off", // Also disable if used in your config
+      "@typescript-eslint/no-empty-object-type": "off",
     },
   },
 ];

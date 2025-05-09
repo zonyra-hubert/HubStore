@@ -58,3 +58,15 @@ export type TotalOrders = InferResultType<
     };
   }
 >;
+type SegmentParams<T extends object = { slug: string }> =
+  T extends Record<string, any>
+    ? {
+        [K in keyof T]: T[K] extends string
+          ? string | string[] | undefined
+          : never;
+      }
+    : T;
+export interface PageProps {
+  params: SegmentParams;
+  searchParams?: any;
+}
