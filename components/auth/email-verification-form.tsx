@@ -7,6 +7,7 @@ import { useCallback, useEffect, useState } from "react";
 import AuthCard from "./auth-card";
 import { FormSuccess } from "./form-succes";
 import { FormError } from "./form-error";
+import { Suspense } from "react";
 
 export const EmailVerificationForm = () => {
   const token = useSearchParams().get("token");
@@ -36,17 +37,19 @@ export const EmailVerificationForm = () => {
   }, []);
 
   return (
-    <AuthCard
-      className=""
-      backButtonLable="Back to login"
-      backButtonHref="/auth/login"
-      cardTitle="Verify your account."
-    >
-      <div className="flex items-center flex-col w-full justify-center">
-        <p>{!success && !error ? "Verifying email..." : null}</p>
-        <FormSuccess message={success} />
-        <FormError message={error} />
-      </div>
-    </AuthCard>
+    <Suspense>
+      <AuthCard
+        className=""
+        backButtonLable="Back to login"
+        backButtonHref="/auth/login"
+        cardTitle="Verify your account."
+      >
+        <div className="flex items-center flex-col w-full justify-center">
+          <p>{!success && !error ? "Verifying email..." : null}</p>
+          <FormSuccess message={success} />
+          <FormError message={error} />
+        </div>
+      </AuthCard>
+    </Suspense>
   );
 };

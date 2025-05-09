@@ -3,7 +3,7 @@
 import { VariantsWithImagesTags } from "@/lib/infer-types";
 import { motion } from "framer-motion";
 import { useSearchParams } from "next/navigation";
-
+import { Suspense } from "react";
 export default function ProductType({
   variants,
 }: {
