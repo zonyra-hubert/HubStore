@@ -12,7 +12,7 @@ import Stripe from "stripe";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: DrizzleAdapter(db),
-  secret: process.env.AUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   session: { strategy: "jwt" },
   events: {
     createUser: async ({ user }) => {
