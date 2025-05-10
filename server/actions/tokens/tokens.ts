@@ -113,7 +113,7 @@ export const getTwoFactorTokenByToken = async (token: string) => {
 export const generatePasswordResetToken = async (email: string) => {
   try {
     const token = crypto.randomUUID();
-    //Hour Expiry
+    //Hour Expiry TO WORK
     const expires = new Date(new Date().getTime() + 3600 * 1000);
 
     const existingToken = await getPasswordResetTokenByEmail(email);
