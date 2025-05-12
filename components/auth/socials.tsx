@@ -11,7 +11,7 @@ const Socials = () => {
         className="flex gap-4 w-ful"
         onClick={() =>
           signIn("google", {
-            redirect: true,
+            redirect: false,
             callbackUrl: "/",
           })
         }
@@ -24,7 +24,7 @@ const Socials = () => {
         variant={"outline"}
         onClick={() =>
           signIn("github", {
-            redirect: true,
+            redirect: false,
             callbackUrl: "/",
           })
         }
