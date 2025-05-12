@@ -14,6 +14,9 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: "HubStore",
+  icons: {
+    icon: "/profile1.jpg", // Path relative to /public
+  },
   description: "One stop shop for all products",
 };
 
