@@ -24,6 +24,7 @@ import { useState } from "react";
 import { FormSuccess } from "./form-succes";
 import { FormError } from "./form-error";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 import { newPasswordSchema } from "@/types/new-password-schema";
 import { newPassword } from "@/server/actions/new-password";
@@ -56,55 +57,57 @@ export const NewPasswordForm = () => {
   };
 
   return (
-    <AuthCard
-      className=""
-      cardTitle="Enter a new password"
-      backButtonHref="/auth/login"
-      backButtonLable="Back to login"
-      showSocials
-    >
-      <div>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <div>
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        placeholder="*********"
-                        type="password"
-                        autoComplete="current-password"
-                        disabled={status === "executing"}
-                      />
-                    </FormControl>
-                    <FormDescription />
-                    <FormMessage />
-                  </FormItem>
+    <Suspense>
+      <AuthCard
+        className=""
+        cardTitle="Enter a new password"
+        backButtonHref="/auth/login"
+        backButtonLable="Back to login"
+        showSocials
+      >
+        <div>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)}>
+              <div>
+                <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Password</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          placeholder="*********"
+                          type="password"
+                          autoComplete="current-password"
+                          disabled={status === "executing"}
+                        />
+                      </FormControl>
+                      <FormDescription />
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormSuccess message={success} />
+                <FormError message={error} />
+                <Button size={"sm"} variant={"link"} asChild>
+                  <Link href="/auth/reset">Forgot your password</Link>
+                </Button>
+              </div>
+              <Button
+                type="submit"
+                className={cn(
+                  "w-full",
+                  status === "executing" ? "animate-pulse" : ""
                 )}
-              />
-              <FormSuccess message={success} />
-              <FormError message={error} />
-              <Button size={"sm"} variant={"link"} asChild>
-                <Link href="/auth/reset">Forgot your password</Link>
+              >
+                Reset Password
               </Button>
-            </div>
-            <Button
-              type="submit"
-              className={cn(
-                "w-full",
-                status === "executing" ? "animate-pulse" : ""
-              )}
-            >
-              Reset Password
-            </Button>
-          </form>
-        </Form>
-      </div>
-    </AuthCard>
+            </form>
+          </Form>
+        </div>
+      </AuthCard>
+    </Suspense>
   );
 };

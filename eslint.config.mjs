@@ -14,18 +14,39 @@ const eslintConfig = [
 
   {
     rules: {
-      // Disable unused variable warning for variables like setSorting
+      // General rules
+      "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-unused-vars": [
         "warn",
-        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
+        },
       ],
-
-      // Allow empty object type interfaces
-      "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-wrapper-object-types": "off",
-      "@typescript-eslint/no-empty-interface": "off", // This is the correct rule for interface issues
-      "@typescript-eslint/no-empty-object-type": "off",
+      "react-hooks/exhaustive-deps": "warn",
+      "@typescript-eslint/no-empty-interface": "warn",
     },
+    overrides: [
+      {
+        files: ["app/api/stripe/route.ts"],
+        rules: {
+          "@typescript-eslint/no-explicit-any": "off",
+        },
+      },
+      {
+        files: ["app/api/uploadthing/core.ts"],
+        rules: {
+          "@typescript-eslint/no-unused-vars": "off",
+        },
+      },
+      {
+        files: ["**/components/ui/**/*.tsx"],
+        rules: {
+          "@typescript-eslint/no-empty-interface": "off",
+        },
+      },
+    ],
   },
 ];
 

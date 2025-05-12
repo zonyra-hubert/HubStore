@@ -12,7 +12,8 @@ import Stripe from "stripe";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: DrizzleAdapter(db),
-  secret: process.env.AUTH_SECRET,
+  trustHost: true,
+  secret: process.env.NEXTAUTH_SECRET,
   session: { strategy: "jwt" },
   events: {
     createUser: async ({ user }) => {
@@ -32,6 +33,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
   },
   callbacks: {
+    async signIn({ user, account, profile }) {
+      console.log("SIGN-IN CALLBACK", { user, account, profile });
+      return true;
+    },
+
     async session({ session, token }) {
       if (session && token.sub) {
         session.user.id = token.sub;
@@ -74,7 +80,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       allowDangerousEmailAccountLinking: true,
     }),
     Github({
-      clientId: process.env.GITHUBT_ID,
+      clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
       allowDangerousEmailAccountLinking: true,
     }),

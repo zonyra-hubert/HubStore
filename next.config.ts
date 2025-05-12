@@ -12,6 +12,21 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: "/api/auth/:path*",
+  //       headers: [
+  //         { key: "Access-Control-Allow-Credentials", value: "true" },
+  //         {
+  //           key: "Access-Control-Allow-Origin",
+  //           value: "https://hubstore.vercel.app",
+  //         },
+  //         { key: "Access-Control-Allow-Methods", value: "GET,POST" },
+  //       ],
+  //     },
+  //   ];
+  // },
   /* config options here */
 };
 

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import { tree } from "next/dist/build/templates/app-page";
 const Socials = () => {
   return (
     <div className="flex flex-col items-center w-full gap-4 ">
@@ -11,7 +12,7 @@ const Socials = () => {
         className="flex gap-4 w-ful"
         onClick={() =>
           signIn("google", {
-            redirect: false,
+            redirect: true,
             callbackUrl: "/",
           })
         }
@@ -24,7 +25,7 @@ const Socials = () => {
         variant={"outline"}
         onClick={() =>
           signIn("github", {
-            redirect: false,
+            redirect: true,
             callbackUrl: "/",
           })
         }
