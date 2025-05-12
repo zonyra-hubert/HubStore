@@ -33,6 +33,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
   },
   callbacks: {
+    async signIn({ user, account, profile }) {
+      console.log("SIGN-IN CALLBACK", { user, account, profile });
+      return true;
+    },
+
     async session({ session, token }) {
       if (session && token.sub) {
         session.user.id = token.sub;
