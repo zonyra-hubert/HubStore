@@ -85,7 +85,7 @@ const ProductVariant = ({
 
   useEffect(() => {
     setEdit();
-  });
+  }, [variant]);
   const { execute, status } = useAction(createVariant, {
     onExecute() {
       if (!editMode) {

@@ -68,7 +68,7 @@ export default function ProductForm() {
     if (editMode) {
       checkProduct(parseInt(editMode));
     }
-  });
+  }, [editMode]);
 
   const { execute, status } = useAction(createProduct, {
     onSuccess: (data) => {
