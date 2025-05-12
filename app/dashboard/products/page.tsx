@@ -4,8 +4,12 @@ import { DataTable } from "./dataTable";
 import { columns } from "./coulums";
 import { Suspense } from "react";
 import LoadingSpinner from "@/components/Loading";
+import { redirect } from "next/navigation";
+import { auth } from "@/server/auth";
 
 export default async function Products() {
+  const session = await auth();
+  if (session?.user.role !== "admin") return redirect("/dashboard/settings");
   const products = await db.query.products.findMany({
     with: {
       productVariants: { with: { variantImages: true, variantTags: true } },

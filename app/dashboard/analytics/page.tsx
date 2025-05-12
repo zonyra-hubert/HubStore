@@ -12,10 +12,14 @@ import Sales from "./sales";
 import Earnings from "./earnings";
 import { Suspense } from "react";
 import LoadingSpinner from "@/components/Loading";
+import { auth } from "@/server/auth";
+import { redirect } from "next/navigation";
 
 export const revalidate = 0;
 
 const Analytics = async () => {
+  const session = await auth();
+  if (session?.user.role !== "admin") return redirect("/dashboard/settings");
   const totoalOrders = await db.query.orderProduct.findMany({
     orderBy: [desc(orderProduct.id)],
     limit: 10,
