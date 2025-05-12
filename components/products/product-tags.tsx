@@ -24,7 +24,7 @@ export default function ProductTags() {
         <Badge
           onClick={() => setFilter("")}
           className={cn(
-            "cursor-pointer bg-black hover:bg-black/75 hover:opacity-100",
+            "cursor-pointer dark:text-white bg-black hover:bg-black/75 hover:opacity-100",
             !tag ? "opacity-100" : "opacity-50"
           )}
         >
@@ -33,7 +33,7 @@ export default function ProductTags() {
         <Badge
           onClick={() => setFilter("blue")}
           className={cn(
-            "cursor-pointer bg-blue-500 hover:bg-blue-600 hover:opacity-100",
+            "cursor-pointer dark:text-white bg-blue-500 hover:bg-blue-600 hover:opacity-100",
             tag === "blue" && tag ? "opacity-100" : "opacity-50"
           )}
         >
@@ -42,7 +42,7 @@ export default function ProductTags() {
         <Badge
           onClick={() => setFilter("green")}
           className={cn(
-            "cursor-pointer bg-green-500 hover:bg-green-600 hover:opacity-100",
+            "cursor-pointer dark:text-white bg-green-500 hover:bg-green-600 hover:opacity-100",
             tag === "green" && tag ? "opacity-100" : "opacity-50"
           )}
         >
@@ -51,7 +51,7 @@ export default function ProductTags() {
         <Badge
           onClick={() => setFilter("purple")}
           className={cn(
-            "cursor-pointer bg-purple-500 hover:bg-purple-600 hover:opacity-100",
+            "cursor-pointer dark:text-white bg-purple-500 hover:bg-purple-600 hover:opacity-100",
             tag === "purple" && tag ? "opacity-100" : "opacity-50"
           )}
         >
