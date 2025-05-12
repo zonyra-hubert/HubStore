@@ -16,7 +16,7 @@ export default async function Home() {
   });
 
   return (
-    <main className="mb-5">
+    <main className="">
       <Algolia />
       <ProductTags />
       <Products variants={data} />
