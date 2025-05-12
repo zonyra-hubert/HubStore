@@ -2,6 +2,8 @@ import { db } from "@/server";
 import placeholder from "@/public/placeholder_small.jpg";
 import { DataTable } from "./dataTable";
 import { columns } from "./coulums";
+import { Suspense } from "react";
+import LoadingSpinner from "@/components/Loading";
 
 export default async function Products() {
   const products = await db.query.products.findMany({
@@ -33,8 +35,10 @@ export default async function Products() {
   });
   if (!dataTable) throw new Error("No data found");
   return (
-    <div>
-      <DataTable columns={columns} data={dataTable} />
-    </div>
+    <Suspense fallback={<LoadingSpinner />}>
+      <div>
+        <DataTable columns={columns} data={dataTable} />
+      </div>
+    </Suspense>
   );
 }

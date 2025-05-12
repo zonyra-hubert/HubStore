@@ -10,6 +10,8 @@ import { orderProduct } from "@/server/schema";
 import { desc } from "drizzle-orm";
 import Sales from "./sales";
 import Earnings from "./earnings";
+import { Suspense } from "react";
+import LoadingSpinner from "@/components/Loading";
 
 export const revalidate = 0;
 
@@ -33,18 +35,20 @@ const Analytics = async () => {
     );
   if (totoalOrders)
     return (
-      <Card>
-        <CardHeader>
-          <CardTitle>Your Analytics </CardTitle>
-          <CardDescription>
-            Check your sales, new customers and more
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Sales totalOrders={totoalOrders} />
-          <Earnings totalOrders={totoalOrders} />
-        </CardContent>
-      </Card>
+      <Suspense fallback={<LoadingSpinner />}>
+        <Card>
+          <CardHeader>
+            <CardTitle>Your Analytics </CardTitle>
+            <CardDescription>
+              Check your sales, new customers and more
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Sales totalOrders={totoalOrders} />
+            <Earnings totalOrders={totoalOrders} />
+          </CardContent>
+        </Card>
+      </Suspense>
     );
 };
 export default Analytics;

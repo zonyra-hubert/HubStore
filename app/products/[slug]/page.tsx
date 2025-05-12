@@ -11,6 +11,8 @@ import { getReviewAverage } from "@/lib/reviewAverage";
 import Stars from "@/components/reviews/stars";
 import AddCart from "@/components/cart/add-cart";
 import { PageProps } from "../../../lib/infer-types";
+import { Suspense } from "react";
+import LoadingSpinner from "@/components/Loading";
 
 export const revalidate = 60;
 
@@ -53,47 +55,52 @@ const Page = async ({ params }: { params: { slug: string } }) => {
       variant?.product.reviews.map((r) => r.rating)
     );
     return (
-      <main>
-        <section className="flex flex-col lg:flex-row gap-4 lg:gap-12 ">
-          <div className="flex-1">
-            <ProductShowcase variants={variant.product.productVariants} />
-          </div>
-          <div className="flex  flex-col flex-1">
-            <h2 className="text-2xl font-bold">{variant?.product.title}</h2>
-            <div>
-              <ProductType variants={variant.product.productVariants} />
-              <Stars
-                rating={reviewAvg}
-                totalReviews={variant.product.reviews.length}
-              />
+      <Suspense fallback={<LoadingSpinner />}>
+        <main>
+          {}
+          <section className="flex flex-col lg:flex-row gap-4 lg:gap-12 ">
+            <div className="flex-1">
+              <ProductShowcase variants={variant.product.productVariants} />
             </div>
-            <Separator />
-            <p className=" my-2">{FormatPrice(variant.product.price)}</p>
-            <div
-              dangerouslySetInnerHTML={{ __html: variant.product.description }}
-            ></div>
-            <p className="text-secondary-foreground font-medium my-2">
-              Available Colors
-            </p>
-            <div className="flex gap-4">
-              {variant.product.productVariants.map((productVariant) => (
-                <ProductPick
-                  key={productVariant.id}
-                  productID={productVariant.productID}
-                  id={productVariant.id}
-                  color={productVariant.color}
-                  productType={productVariant.productType}
-                  title={variant.product.title}
-                  price={variant.product.price}
-                  image={productVariant.variantImages[0].url}
+            <div className="flex  flex-col flex-1">
+              <h2 className="text-2xl font-bold">{variant?.product.title}</h2>
+              <div>
+                <ProductType variants={variant.product.productVariants} />
+                <Stars
+                  rating={reviewAvg}
+                  totalReviews={variant.product.reviews.length}
                 />
-              ))}
+              </div>
+              <Separator />
+              <p className=" my-2">{FormatPrice(variant.product.price)}</p>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: variant.product.description,
+                }}
+              ></div>
+              <p className="text-secondary-foreground font-medium my-2">
+                Available Colors
+              </p>
+              <div className="flex gap-4">
+                {variant.product.productVariants.map((productVariant) => (
+                  <ProductPick
+                    key={productVariant.id}
+                    productID={productVariant.productID}
+                    id={productVariant.id}
+                    color={productVariant.color}
+                    productType={productVariant.productType}
+                    title={variant.product.title}
+                    price={variant.product.price}
+                    image={productVariant.variantImages[0].url}
+                  />
+                ))}
+              </div>
+              <AddCart />
             </div>
-            <AddCart />
-          </div>
-        </section>
-        <Reviews productID={variant.productID} />
-      </main>
+          </section>
+          <Reviews productID={variant.productID} />
+        </main>
+      </Suspense>
     );
   }
 };

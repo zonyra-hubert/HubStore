@@ -11,6 +11,7 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Suspense } from "react";
+import LoadingSpinner from "../Loading";
 
 export default function ProductShowcase({
   variants,
@@ -35,7 +36,7 @@ export default function ProductShowcase({
   });
 
   return (
-    <Suspense>
+    <Suspense fallback={<LoadingSpinner />}>
       <Carousel setApi={setApi} opts={{ loop: true }}>
         <CarouselContent>
           {variants.map(

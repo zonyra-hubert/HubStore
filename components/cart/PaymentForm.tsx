@@ -8,11 +8,12 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import { Button } from "../ui/button";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { createPaymentIntent } from "@/server/actions/create-payment-intents";
 import { useAction } from "next-safe-action/hook";
 import { createOrder } from "@/server/actions/create-oder";
 import { toast } from "sonner";
+import LoadingSpinner from "../Loading";
 
 const PaymentForm = ({ totalPrice }: { totalPrice: number }) => {
   const stripe = useStripe();
@@ -96,16 +97,18 @@ const PaymentForm = ({ totalPrice }: { totalPrice: number }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <PaymentElement />
-      <AddressElement options={{ mode: "shipping" }} />
-      <Button
-        className="max-w-mf my-4 w-full"
-        disabled={!stripe || !elements || isLoading}
-      >
-        {isLoading ? "Processing..." : "Pay now"}
-      </Button>
-    </form>
+    <Suspense fallback={<LoadingSpinner />}>
+      <form onSubmit={handleSubmit}>
+        <PaymentElement />
+        <AddressElement options={{ mode: "shipping" }} />
+        <Button
+          className="max-w-mf my-4 w-full"
+          disabled={!stripe || !elements || isLoading}
+        >
+          {isLoading ? "Processing..." : "Pay now"}
+        </Button>
+      </form>
+    </Suspense>
   );
 };
 

@@ -8,6 +8,7 @@ import AuthCard from "./auth-card";
 import { FormSuccess } from "./form-succes";
 import { FormError } from "./form-error";
 import { Suspense } from "react";
+import LoadingSpinner from "../Loading";
 
 export const EmailVerificationForm = () => {
   const token = useSearchParams().get("token");
@@ -37,7 +38,7 @@ export const EmailVerificationForm = () => {
   }, [handleVerification]);
 
   return (
-    <Suspense>
+    <Suspense fallback={<LoadingSpinner />}>
       <AuthCard
         className=""
         backButtonLable="Back to login"

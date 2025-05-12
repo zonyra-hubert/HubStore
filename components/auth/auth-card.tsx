@@ -7,6 +7,8 @@ import {
 } from "@/components/ui/card";
 import Socials from "./socials";
 import BackButton from "./back-button";
+import { Suspense } from "react";
+import LoadingSpinner from "../Loading";
 type CardWrapperProps = {
   children: React.ReactNode;
   className: string;
@@ -24,20 +26,22 @@ const AuthCard = ({
   showSocials,
 }: CardWrapperProps) => {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{cardTitle}</CardTitle>
-      </CardHeader>
-      <CardContent>{children}</CardContent>
-      {showSocials && (
+    <Suspense fallback={<LoadingSpinner />}>
+      <Card>
+        <CardHeader>
+          <CardTitle>{cardTitle}</CardTitle>
+        </CardHeader>
+        <CardContent>{children}</CardContent>
+        {showSocials && (
+          <CardFooter>
+            <Socials />
+          </CardFooter>
+        )}
         <CardFooter>
-          <Socials />
+          <BackButton href={backButtonHref} label={backButtonLable} />
         </CardFooter>
-      )}
-      <CardFooter>
-        <BackButton href={backButtonHref} label={backButtonLable} />
-      </CardFooter>
-    </Card>
+      </Card>
+    </Suspense>
   );
 };
 

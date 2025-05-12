@@ -28,6 +28,7 @@ import { Suspense } from "react";
 
 import { newPasswordSchema } from "@/types/new-password-schema";
 import { newPassword } from "@/server/actions/new-password";
+import LoadingSpinner from "../Loading";
 
 export const NewPasswordForm = () => {
   const form = useForm<z.infer<typeof newPasswordSchema>>({
@@ -57,7 +58,7 @@ export const NewPasswordForm = () => {
   };
 
   return (
-    <Suspense>
+    <Suspense fallback={<LoadingSpinner />}>
       <AuthCard
         className=""
         cardTitle="Enter a new password"
