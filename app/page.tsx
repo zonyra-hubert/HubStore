@@ -21,7 +21,7 @@ export default async function Home() {
     <Suspense fallback={<LoadingSpinner />}>
       <main>
         <section
-          className=" blur-md mb-8 rounded-xl border p-6 md:p-10 text-foreground"
+          className="mb-8 rounded-xl border p-6 md:p-10 text-foreground"
           style={{
             backgroundImage: "url('/lll.png')",
             backgroundSize: "cover",
