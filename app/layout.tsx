@@ -26,11 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Correct way to add AdSense in Next.js */}
         <Script
-          async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6078391316220781"
-          strategy="afterInteractive"
+          strategy="beforeInteractive" // Changed for verification
           crossOrigin="anonymous"
         />
       </head>
