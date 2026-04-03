@@ -8,7 +8,7 @@ import Stripe from "stripe";
 
 export async function POST(req: NextRequest) {
   const stripe = new Stripe(process.env.STRIPE_SECRET || "", {
-    apiVersion: "2025-04-30.basil",
+    apiVersion: "2025-08-27.basil",
   });
   const sig = req.headers.get("stripe-signature") || "";
   const signingSecret = process.env.STRIPE_WEBHOOK_SECRET || "";
@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
     case "payment_intent.succeeded":
       const retrieveOrder = await stripe.paymentIntents.retrieve(
         event.data.object.id,
-        { expand: ["latest_charge"] }
+        { expand: ["latest_charge"] },
       );
       const charge = retrieveOrder.latest_charge as Stripe.Charge;
 

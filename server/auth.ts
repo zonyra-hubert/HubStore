@@ -18,7 +18,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   events: {
     createUser: async ({ user }) => {
       const stripe = new Stripe(process.env.STRIPE_SECRET!, {
-        apiVersion: "2025-04-30.basil",
+        apiVersion: "2025-08-27.basil",
       });
       const customer = await stripe.customers.create({
         email: user.email!,
