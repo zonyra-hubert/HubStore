@@ -13,11 +13,11 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "HubStore",
+  title: "FindIt - Your Ultimate Rental Hub",
   icons: {
     icon: "/profile1.jpg", // Path relative to /public
   },
-  description: "One stop shop for all products",
+  description: "Check for all your houses or hostels for rent",
 };
 
 export default function RootLayout({
@@ -27,6 +27,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6078391316220781"
+          crossorigin="anonymous"
+        ></script>
+      </head>
       <body className={roboto.className}>
         <ThemeProvider
           attribute="class"
