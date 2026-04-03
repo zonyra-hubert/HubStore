@@ -82,7 +82,6 @@ export default function CartItems() {
                   <TableCell>
                     <div className="flex items-center justify-between ">
                       <UserMinus
-                        title="Remove Property"
                         aria-label="Remove Property"
                         onClick={() => {
                           removeFromCart({
