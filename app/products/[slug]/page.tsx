@@ -16,21 +16,22 @@ import LoadingSpinner from "@/components/Loading";
 
 export const revalidate = 60;
 
-export async function generateStaticParams() {
-  const data = await db.query.productVariants.findMany({
-    with: {
-      variantImages: true,
-      variantTags: true,
-      product: true,
-    },
-    orderBy: (productVariants, { desc }) => [desc(productVariants.id)],
-  });
-  if (data) {
-    const slugID = data.map((variant) => ({ slug: variant.id.toString() }));
-    return slugID;
-  }
-  return [];
-}
+// export async function generateStaticParams() {
+//   const data = await db.query.productVariants.findMany({
+//     with: {
+//       variantImages: true,
+//       variantTags: true,
+//       product: true,
+//     },
+//     orderBy: (productVariants, { desc }) => [desc(productVariants.id)],
+//   });
+//   if (data) {
+//     const slugID = data.map((variant) => ({ slug: variant.id.toString() }));
+//     return slugID;
+//   }
+//   return [];
+// }
+export const dynamic = "force-dynamic";
 
 const Page = async ({ params }: { params: { slug: string } }) => {
   const variant = await db.query.productVariants.findFirst({
@@ -52,7 +53,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
 
   if (variant) {
     const reviewAvg = getReviewAverage(
-      variant?.product.reviews.map((r) => r.rating)
+      variant?.product.reviews.map((r) => r.rating),
     );
     return (
       <Suspense fallback={<LoadingSpinner />}>
