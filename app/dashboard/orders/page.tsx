@@ -65,18 +65,20 @@ const Page = async () => {
     <Suspense fallback={<LoadingSpinner />}>
       <Card className="">
         <CardHeader>
-          <CardTitle>Your orders</CardTitle>
-          <CardDescription>Check the status of your orders</CardDescription>
+          <CardTitle>Your appointments</CardTitle>
+          <CardDescription>
+            Check the status of your property viewing appointments
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
-            <TableCaption>A list of your recent orders.</TableCaption>
+            <TableCaption>A list of your recent appointments.</TableCaption>
             <TableHeader>
               <TableRow>
-                <TableHead>Order Number</TableHead>
+                <TableHead>Appointment ID</TableHead>
                 <TableHead>Total</TableHead>
                 <TableHead>Status</TableHead>
-                <TableHead>Created</TableHead>
+                <TableHead>Requested</TableHead>
                 <TableHead>Actions</TableHead>
               </TableRow>
             </TableHeader>
@@ -113,7 +115,7 @@ const Page = async () => {
                           <DropdownMenuItem>
                             <DialogTrigger>
                               <Button className="w-full" variant={"ghost"}>
-                                View Details
+                                View Appointment
                               </Button>
                             </DialogTrigger>
                           </DropdownMenuItem>
@@ -125,7 +127,7 @@ const Page = async () => {
                                 variant={"ghost"}
                               >
                                 <Link href={order.receiptURL} target="_blank">
-                                  Download Receipt
+                                  Download Confirmation
                                 </Link>
                               </Button>
                             </DropdownMenuItem>
@@ -134,9 +136,11 @@ const Page = async () => {
                       </DropdownMenu>
                       <DialogContent className="rounded-md">
                         <DialogHeader>
-                          <DialogTitle>Order Details #{order.id}</DialogTitle>
+                          <DialogTitle>
+                            Appointment Details #{order.id}
+                          </DialogTitle>
                           <DialogDescription>
-                            Your order total is ${order.total}
+                            Appointment summary is ${order.total}
                           </DialogDescription>
                         </DialogHeader>
                         <Card className="overflow-auto p-2 flex flex-col gap-4">
@@ -144,10 +148,10 @@ const Page = async () => {
                             <TableHeader>
                               <TableRow>
                                 <TableHead>Image</TableHead>
-                                <TableHead>Price</TableHead>
-                                <TableHead>Product</TableHead>
-                                <TableHead>Color</TableHead>
-                                <TableHead>Quantity</TableHead>
+                                <TableHead>Starting From</TableHead>
+                                <TableHead>Listing</TableHead>
+                                <TableHead>Property Type</TableHead>
+                                <TableHead>Number of Visitors</TableHead>
                               </TableRow>
                             </TableHeader>
                             <TableBody>
@@ -165,7 +169,9 @@ const Page = async () => {
                                       />
                                     </TableCell>
 
-                                    <TableCell> ${product.price}</TableCell>
+                                    <TableCell>
+                                      Starting From ${product.price}
+                                    </TableCell>
                                     <TableCell>
                                       <p>{product.title}</p>
                                     </TableCell>
@@ -180,7 +186,7 @@ const Page = async () => {
                                     </TableCell>
                                     <TableCell>{quantity}</TableCell>
                                   </TableRow>
-                                )
+                                ),
                               )}
                             </TableBody>
                           </Table>

@@ -11,7 +11,7 @@ export default function Review({ reviews }: { reviews: ReviewsWithUser[] }) {
   return (
     <motion.div className="flex flex-col gap-4">
       {reviews.length === 0 && (
-        <p className="py-2 text-md font-medium">No reviews yet</p>
+        <p className="py-2 text-md font-medium">No guest reviews yet</p>
       )}
       {reviews.map((review) => (
         <Card key={review.id} className="p-4">

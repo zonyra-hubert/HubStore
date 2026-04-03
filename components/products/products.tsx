@@ -18,7 +18,7 @@ export default function Products({ variants }: ProductTypes) {
   const filtered = useMemo(() => {
     if (Paramtag && variants) {
       return variants.filter((variant) =>
-        variant.variantTags.some((tag) => tag.tag === Paramtag)
+        variant.variantTags.some((tag) => tag.tag === Paramtag),
       );
     }
     return variants;
@@ -28,7 +28,7 @@ export default function Products({ variants }: ProductTypes) {
       <main className="grid sm:grid-cols-1 md:grid-cols-2 gap-12 lg:grid-cols-3">
         {filtered.map((variant) => (
           <Link
-            className="py-2"
+            className="py-2 group"
             key={variant.id}
             href={`/products/${variant.id}?id=${variant.id}&productID=${variant.productID}&price=${variant.product.price}&title=${variant.product.title}&type=${variant.productType}&image=${variant.variantImages[0].url}`}
           >
@@ -46,10 +46,13 @@ export default function Products({ variants }: ProductTypes) {
                 <p className="text-sm text-muted-foreground">
                   {variant.productType}
                 </p>
+                <p className="text-xs text-emerald-700 mt-1 group-hover:underline">
+                  View listing details
+                </p>
               </div>
               <div>
                 <Badge className="text-sm" variant={"secondary"}>
-                  {FormatPrice(variant.product.price)}
+                  Starting From {FormatPrice(variant.product.price)} / month
                 </Badge>
               </div>
             </div>

@@ -11,11 +11,12 @@ import Toaster from "@/components/ui/toaster";
 const fontClass = "antialiased font-sans";
 
 export const metadata: Metadata = {
-  title: "FindIt - Your Ultimate Rental Hub",
+  title: "HubStay - Student & Rental Listings",
   icons: {
     icon: "/profile1.jpg",
   },
-  description: "Check for all your houses or hostels for rent",
+  description:
+    "Discover hostels, rooms, and houses available for rent in one place.",
 };
 
 export default function RootLayout({

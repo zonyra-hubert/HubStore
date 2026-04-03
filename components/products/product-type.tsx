@@ -20,7 +20,7 @@ export default function ProductType({
           initial={{ opacity: 0, y: 4 }}
           className="text-secondary-foreground font-medium"
         >
-          {selectedType}
+          Property Type: {selectedType}
         </motion.div>
       );
     }

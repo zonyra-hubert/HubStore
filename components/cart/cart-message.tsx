@@ -14,22 +14,28 @@ const CartMessage = () => {
       initial={{ opacity: 0, x: 10 }}
     >
       <DrawerTitle>
-        {checkoutProgress === "cart-page" ? "Your cart items" : null}
-        {checkoutProgress === "payment-page" ? "Chose a payment method" : null}
-        {checkoutProgress === "confirmation-page" ? "Order Confirmed" : null}
+        {checkoutProgress === "cart-page" ? "Your viewing requests" : null}
+        {checkoutProgress === "payment-page"
+          ? "Confirm your appointment"
+          : null}
+        {checkoutProgress === "confirmation-page"
+          ? "Appointment Confirmed"
+          : null}
       </DrawerTitle>
       <DrawerDescription className="py-1">
-        {checkoutProgress === "cart-page" ? "View and edit your bag" : null}
+        {checkoutProgress === "cart-page"
+          ? "Review the properties you want to visit"
+          : null}
         {checkoutProgress === "payment-page" ? (
           <span
             className="flex items-center justify-center gap-1 cursor-pointer hover:text-primary"
             onClick={() => setCheckoutProgress("cart-page")}
           >
-            <ArrowLeft size={14} /> Head back to cart
+            <ArrowLeft size={14} /> Head back to viewings
           </span>
         ) : null}
         {checkoutProgress === "confirmation-page"
-          ? "You will recieved an email with your reciept!"
+          ? "Your appointment request has been saved. You can contact the hostel directly after visiting."
           : null}
       </DrawerDescription>
     </motion.div>

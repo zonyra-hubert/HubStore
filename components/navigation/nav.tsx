@@ -6,9 +6,12 @@ import { LogIn } from "lucide-react";
 // import Logo from "./logo";
 import bb from "../../public/gggg.png";
 import Image from "next/image";
-import CartDrawer from "../cart/cart-drawer";
 export default async function Nav() {
   const session = await auth();
+  const listPropertyHref =
+    session?.user.role === "admin"
+      ? "/dashboard/add-product"
+      : "/dashboard/request-access";
 
   return (
     <header className=" py-12 shadow-sm">
@@ -24,15 +27,25 @@ export default async function Nav() {
               {/* <Logo /> */}
             </Link>
           </li>
-          <li className="relative flex items-center hover:bg-muted ">
-            <CartDrawer />
+          <li>
+            <Link href="/" className="text-sm font-medium hover:underline">
+              Browse Listings
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={listPropertyHref}
+              className="text-sm font-medium hover:underline"
+            >
+              List Your Property
+            </Link>
           </li>
           {!session ? (
             <li className="flex items-center justify-center">
               <Button asChild>
                 <Link className="flex gap-2" href="/auth/login">
                   <LogIn size={16} />
-                  <span>LogIn</span>
+                  <span>Login</span>
                 </Link>
               </Button>
             </li>

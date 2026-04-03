@@ -21,7 +21,17 @@ export default function OrderConfirmed() {
         >
           <Lottie className="h-56 my-4" animationData={orderConfirmed} />
         </motion.div>
-        <h2 className="text-2xl font-medium">Thank you for your purchase</h2>
+        <h2 className="text-2xl font-medium">Appointment Confirmed</h2>
+        <p className="max-w-md text-center text-sm text-muted-foreground">
+          Your viewing appointment has been booked! Visit the property on your
+          selected date. If you love it, call the hostel directly to check
+          availability and reserve your space.
+        </p>
+        <div className="rounded-md border p-4 text-sm text-left w-full max-w-md">
+          <p className="font-medium">Hostel Contact</p>
+          <p>Phone: +233 000 000 000</p>
+          <p>WhatsApp: +233 000 000 000</p>
+        </div>
         <Link href={"/dashboard/orders"}>
           <Button
             variant={"secondary"}
@@ -30,7 +40,7 @@ export default function OrderConfirmed() {
               setCartOpen(false);
             }}
           >
-            View your order
+            Browse More Properties
           </Button>
         </Link>
       </div>

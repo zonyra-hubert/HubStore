@@ -6,7 +6,8 @@ import LoadingSpinner from "@/components/Loading";
 
 export default async function AddProductLayout() {
   const session = await auth();
-  if (session?.user.role !== "admin") return redirect("/dashboard/settings");
+  if (session?.user.role !== "admin")
+    return redirect("/dashboard/request-access");
 
   return (
     <Suspense fallback={<LoadingSpinner />}>

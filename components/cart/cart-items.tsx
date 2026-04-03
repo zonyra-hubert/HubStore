@@ -13,7 +13,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useMemo } from "react";
 import formatPrice from "@/lib/format-price";
 import Image from "next/image";
-import { MinusCircle, PlusCircle } from "lucide-react";
+import { CalendarPlus, UserMinus } from "lucide-react";
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import emptyCart from "@/public/empty-box.json";
 import { createId } from "@paralleldrive/cuid2";
@@ -45,7 +45,7 @@ export default function CartItems() {
             transition={{ delay: 0.3, duration: 0.5 }}
           >
             <h2 className="text-2xl text-muted-foreground text-center">
-              Your cart is empty
+              You have no viewings scheduled yet
             </h2>
             <Lottie className="h-64" animationData={emptyCart} />
           </motion.div>
@@ -57,9 +57,9 @@ export default function CartItems() {
             <TableHeader>
               <TableRow>
                 <TableCell>Product</TableCell>
-                <TableCell>Price</TableCell>
+                <TableCell>Starting From</TableCell>
                 <TableCell>Image</TableCell>
-                <TableCell>Quantity</TableCell>
+                <TableCell>Number of Visitors</TableCell>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -81,7 +81,9 @@ export default function CartItems() {
                   </TableCell>
                   <TableCell>
                     <div className="flex items-center justify-between ">
-                      <MinusCircle
+                      <UserMinus
+                        title="Remove Property"
+                        aria-label="Remove Property"
                         onClick={() => {
                           removeFromCart({
                             ...item,
@@ -97,7 +99,7 @@ export default function CartItems() {
                       <p className="text-md font-bold">
                         {item.variant.quantity}
                       </p>
-                      <PlusCircle
+                      <CalendarPlus
                         className="cursor-pointer hover:text-muted-foreground duration-300 transition-colors"
                         onClick={() => {
                           addToCart({
@@ -143,7 +145,7 @@ export default function CartItems() {
         className="max-w-md w-full"
         disabled={cart.length === 0}
       >
-        Checkout
+        Confirm Appointment
       </Button>
     </motion.div>
   );

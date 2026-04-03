@@ -12,7 +12,7 @@ const Tiptap = ({ val }: { val: string }) => {
   const editor = useEditor({
     extensions: [
       Placeholder.configure({
-        placeholder: "Add a longer description for your product",
+        placeholder: "Add listing details like location, amenities, and rules",
         emptyNodeClass:
           "first:before:text-gray-600 first:before:float-left first:before:content-[attr(data-placeholder)] first:before:pointer-events-none",
       }),

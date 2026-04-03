@@ -65,7 +65,7 @@ export default function ReviewsForm() {
       <PopoverTrigger asChild>
         <div className="w-full">
           <Button variant={"secondary"} className="font-medium w-full">
-            Leave a review
+            Leave a guest review
           </Button>
         </div>
       </PopoverTrigger>
@@ -77,11 +77,11 @@ export default function ReviewsForm() {
               name="comment"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Leave your review</FormLabel>
+                  <FormLabel>Leave your guest review</FormLabel>
                   <FormControl>
                     <Textarea
                       {...field}
-                      placeholder="How would you describe this product?"
+                      placeholder="How would you describe this property?"
                     />
                   </FormControl>
                   <FormMessage />
@@ -93,7 +93,7 @@ export default function ReviewsForm() {
               name="rating"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Leave your Rating</FormLabel>
+                  <FormLabel>Rate this property</FormLabel>
                   <FormControl>
                     <Input type="hidden" placeholder="Satr rating" {...field} />
                   </FormControl>
@@ -117,7 +117,7 @@ export default function ReviewsForm() {
                               "text-primary bg-transparent transition-all duration-300 ease-in-out",
                               form.getValues("rating") >= value
                                 ? "fill-primary"
-                                : "fill-muted"
+                                : "fill-muted",
                             )}
                           />
                         </motion.div>
@@ -132,7 +132,9 @@ export default function ReviewsForm() {
               className="w-full"
               type="submit"
             >
-              {status === "executing" ? "Adding Review..." : "Add Review"}
+              {status === "executing"
+                ? "Adding Guest Review..."
+                : "Add Guest Review"}
             </Button>
           </form>
         </Form>

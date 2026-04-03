@@ -56,20 +56,28 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
     async jwt({ token }) {
       if (!token.sub) return token;
-      const existingUser = await db.query.users.findFirst({
-        where: eq(users.id, token.sub),
-      });
-      if (!existingUser) return token;
-      const existingAccount = await db.query.accounts.findFirst({
-        where: eq(accounts.userId, existingUser.id),
-      });
 
-      token.isOAuth = !!existingAccount;
-      token.name = existingUser.name;
-      token.email = existingUser.email;
-      token.role = existingUser.role;
-      token.isTwoFactorEnabled = existingUser.twofactorEnabled;
-      token.image = existingUser.image;
+      try {
+        const existingUser = await db.query.users.findFirst({
+          where: eq(users.id, token.sub),
+        });
+
+        if (!existingUser) return token;
+
+        const existingAccount = await db.query.accounts.findFirst({
+          where: eq(accounts.userId, existingUser.id),
+        });
+
+        token.isOAuth = !!existingAccount;
+        token.name = existingUser.name;
+        token.email = existingUser.email;
+        token.role = existingUser.role;
+        token.isTwoFactorEnabled = existingUser.twofactorEnabled;
+        token.image = existingUser.image;
+      } catch (error) {
+        console.error("JWT callback DB lookup failed", error);
+      }
+
       return token;
     },
   },

@@ -21,17 +21,19 @@ const Sales = ({ totalOrders }: { totalOrders: TotalOrders[] }) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle> New Sales</CardTitle>
-        <CardDescription>Here are your recent sales</CardDescription>
+        <CardTitle>Recent Bookings</CardTitle>
+        <CardDescription>
+          Here are your recent appointment bookings
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Customer</TableHead>
-              <TableHead>Item</TableHead>
-              <TableHead>Price</TableHead>
-              <TableHead>Quantity</TableHead>
+              <TableHead>Visitor</TableHead>
+              <TableHead>Property</TableHead>
+              <TableHead>Starting From</TableHead>
+              <TableHead>Number of Visitors</TableHead>
               <TableHead>Image</TableHead>
             </TableRow>
           </TableHeader>
@@ -77,7 +79,7 @@ const Sales = ({ totalOrders }: { totalOrders: TotalOrders[] }) => {
                     />
                   </TableCell>
                 </TableRow>
-              )
+              ),
             )}
           </TableBody>
         </Table>

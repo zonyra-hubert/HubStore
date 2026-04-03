@@ -66,7 +66,7 @@ const ActionCell = ({ row }: { row: Row<ProductColumn> }) => {
 
         <DropdownMenuItem className="dark:focus:bg-primary focus:bg-primary/50 cursor-pointer">
           <Link href={`/dashboard/add-product?id=${product.id}`}>
-            Edit Product
+            Edit Listing
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem
@@ -75,7 +75,7 @@ const ActionCell = ({ row }: { row: Row<ProductColumn> }) => {
           }}
           className="dark:focus:bg-destructive focus:bg-destructive/50 cursor-pointer"
         >
-          Delete Product
+          Delete Listing
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
@@ -83,10 +83,10 @@ const ActionCell = ({ row }: { row: Row<ProductColumn> }) => {
 };
 export const columns: ColumnDef<ProductColumn>[] = [
   { accessorKey: "id", header: "ID" },
-  { accessorKey: "title", header: "Title" },
+  { accessorKey: "title", header: "Listing" },
   {
     accessorKey: "variants",
-    header: "Variants",
+    header: "Room Types",
     cell: ({ row }) => {
       const variants = row.getValue("variants") as VariantsWithImagesTags[];
       return (
@@ -127,7 +127,7 @@ export const columns: ColumnDef<ProductColumn>[] = [
                 </span>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Create a new product variant</p>
+                <p>Create a new room type variant</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
@@ -137,7 +137,7 @@ export const columns: ColumnDef<ProductColumn>[] = [
   },
   {
     accessorKey: "price",
-    header: "Price",
+    header: "Starting From",
     cell: ({ row }) => {
       const price = parseFloat(row.getValue("price"));
       const formatted = new Intl.NumberFormat("en-US", {

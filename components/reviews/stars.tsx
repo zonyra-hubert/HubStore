@@ -20,13 +20,13 @@ export default function Stars({
           key={star}
           className={cn(
             "text-primary bg-transparent transition-all duration-300 ease-in-out",
-            rating >= star ? "fill-primary" : "fill-transparent"
+            rating >= star ? "fill-primary" : "fill-transparent",
           )}
         ></Star>
       ))}
       {totalReviews ? (
         <span className="text-secondary-foreground font-bold text-sm px-1">
-          {totalReviews} reviews
+          {totalReviews} guest reviews
         </span>
       ) : null}
     </div>

@@ -61,9 +61,9 @@ export function DataTable<TData, TValue>({
     <div className="rounded-md border">
       <Card>
         <CardHeader>
-          <CardTitle>Your Products</CardTitle>
+          <CardTitle>Your Listings</CardTitle>
           <CardDescription>
-            Update, delete and edit your products
+            Update, delete, and edit your property listings
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -90,7 +90,7 @@ export function DataTable<TData, TValue>({
                             ? null
                             : flexRender(
                                 header.column.columnDef.header,
-                                header.getContext()
+                                header.getContext(),
                               )}
                         </TableHead>
                       );
@@ -109,7 +109,7 @@ export function DataTable<TData, TValue>({
                         <TableCell key={cell.id}>
                           {flexRender(
                             cell.column.columnDef.cell,
-                            cell.getContext()
+                            cell.getContext(),
                           )}
                         </TableCell>
                       ))}
@@ -121,7 +121,7 @@ export function DataTable<TData, TValue>({
                       colSpan={columns.length}
                       className="h-24 text-center"
                     >
-                      No results.
+                      No properties found
                     </TableCell>
                   </TableRow>
                 )}

@@ -20,7 +20,7 @@ const DashboardNav = ({
               <Link
                 className={cn(
                   "flex gap-1 flex-col items-center relative",
-                  pathname === link.path && "text-primary"
+                  pathname === link.path && "text-primary",
                 )}
                 href={link.path}
               >

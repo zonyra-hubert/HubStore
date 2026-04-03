@@ -20,6 +20,10 @@ export default function Payment() {
   return (
     <Suspense fallback={<LoadingSpinner />}>
       <motion.div className="max-w-2xl mx-auto">
+        <div className="mb-4 rounded-md border bg-muted/30 p-4 text-sm">
+          No payment needed — visit the property and contact them directly to
+          confirm your stay.
+        </div>
         <Elements
           stripe={stripe}
           options={{

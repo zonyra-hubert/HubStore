@@ -73,14 +73,16 @@ const Page = async ({ params }: { params: { slug: string } }) => {
                 />
               </div>
               <Separator />
-              <p className=" my-2">{FormatPrice(variant.product.price)}</p>
+              <p className=" my-2">
+                Starting From {FormatPrice(variant.product.price)} / month
+              </p>
               <div
                 dangerouslySetInnerHTML={{
                   __html: variant.product.description,
                 }}
               ></div>
               <p className="text-secondary-foreground font-medium my-2">
-                Available Colors
+                Available Property Types
               </p>
               <div className="flex gap-4">
                 {variant.product.productVariants.map((productVariant) => (

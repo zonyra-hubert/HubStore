@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useCartStore } from "@/lib/client-store";
-import { Check, CreditCard, ShoppingCart } from "lucide-react";
+import { CalendarCheck, Check, PhoneCall } from "lucide-react";
 
 export default function CartProgress() {
   const { checkoutProgress } = useCartStore();
@@ -27,7 +27,7 @@ export default function CartProgress() {
             transition={{ delay: 0.25 }}
             className="bg-primary rounded-full p-2 z-50"
           >
-            <ShoppingCart className="text-white" size={14} />
+            <CalendarCheck className="text-white" size={14} />
           </motion.div>
           <motion.div
             initial={{ scale: 0 }}
@@ -42,7 +42,7 @@ export default function CartProgress() {
             transition={{ delay: 0.25 }}
             className="bg-primary rounded-full p-2 z-50"
           >
-            <CreditCard className="text-white" size={14} />
+            <PhoneCall className="text-white" size={14} />
           </motion.div>
           <motion.div
             initial={{ scale: 0 }}

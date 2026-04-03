@@ -59,7 +59,7 @@ function Hit({
               __html: hit._highlightResult.productType.value,
             }}
           ></p>
-          <p className="font-medium">${hit.price}</p>
+          <p className="font-medium">Starting From ${hit.price} / month</p>
         </div>
       </Link>
     </div>
@@ -81,6 +81,7 @@ export default function Algolia() {
     >
       <div className="relative">
         <SearchBox
+          placeholder="Search by location, listing type, or hostel name"
           onFocus={() => setActive(true)}
           onBlur={() => {
             setTimeout(() => {

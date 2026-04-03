@@ -25,37 +25,37 @@ export default function ProductTags() {
           onClick={() => setFilter("")}
           className={cn(
             "cursor-pointer dark:text-white bg-black hover:bg-black/75 hover:opacity-100",
-            !tag ? "opacity-100" : "opacity-50"
+            !tag ? "opacity-100" : "opacity-50",
           )}
         >
           All
         </Badge>
         <Badge
-          onClick={() => setFilter("blue")}
+          onClick={() => setFilter("hostel")}
           className={cn(
-            "cursor-pointer dark:text-white bg-blue-500 hover:bg-blue-600 hover:opacity-100",
-            tag === "blue" && tag ? "opacity-100" : "opacity-50"
+            "cursor-pointer dark:text-white bg-sky-500 hover:bg-sky-600 hover:opacity-100",
+            tag === "hostel" && tag ? "opacity-100" : "opacity-50",
           )}
         >
-          Blue
+          Hostel
         </Badge>
         <Badge
-          onClick={() => setFilter("green")}
+          onClick={() => setFilter("room")}
           className={cn(
             "cursor-pointer dark:text-white bg-green-500 hover:bg-green-600 hover:opacity-100",
-            tag === "green" && tag ? "opacity-100" : "opacity-50"
+            tag === "room" && tag ? "opacity-100" : "opacity-50",
           )}
         >
-          Green
+          Room
         </Badge>
         <Badge
-          onClick={() => setFilter("purple")}
+          onClick={() => setFilter("house")}
           className={cn(
-            "cursor-pointer dark:text-white bg-purple-500 hover:bg-purple-600 hover:opacity-100",
-            tag === "purple" && tag ? "opacity-100" : "opacity-50"
+            "cursor-pointer dark:text-white bg-amber-500 hover:bg-amber-600 hover:opacity-100",
+            tag === "house" && tag ? "opacity-100" : "opacity-50",
           )}
         >
-          Purple
+          House
         </Badge>
       </div>
     </Suspense>

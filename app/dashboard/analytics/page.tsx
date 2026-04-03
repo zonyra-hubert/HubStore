@@ -33,7 +33,7 @@ const Analytics = async () => {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>No Orders</CardTitle>
+          <CardTitle>No Bookings Yet</CardTitle>
         </CardHeader>
       </Card>
     );
@@ -42,9 +42,9 @@ const Analytics = async () => {
       <Suspense fallback={<LoadingSpinner />}>
         <Card>
           <CardHeader>
-            <CardTitle>Your Analytics </CardTitle>
+            <CardTitle>Listing Insights</CardTitle>
             <CardDescription>
-              Check your sales, new customers and more
+              Track booking demand, earnings, and recent tenant activity
             </CardDescription>
           </CardHeader>
           <CardContent>

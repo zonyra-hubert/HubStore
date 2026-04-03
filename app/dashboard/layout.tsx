@@ -1,5 +1,5 @@
 import { auth } from "@/server/auth";
-import { BarChart, Package, Pen, Settings, Truck } from "lucide-react";
+import { BarChart, Building2, MapPin, Pen, Settings } from "lucide-react";
 
 import DashboardNav from "../../components/navigation/dashboard-nav";
 export default async function DashboardLayout({
@@ -11,9 +11,9 @@ export default async function DashboardLayout({
 
   const userLinks = [
     {
-      label: "Orders",
+      label: "Appointments",
       path: "/dashboard/orders",
-      icon: <Truck size={16} />,
+      icon: <MapPin size={16} />,
     },
 
     {
@@ -27,19 +27,19 @@ export default async function DashboardLayout({
     session?.user.role === "admin"
       ? [
           {
-            label: "Analytics",
+            label: "Insights",
             path: "/dashboard/analytics",
             icon: <BarChart size={16} />,
           },
           {
-            label: "Create",
+            label: "New Listing",
             path: "/dashboard/add-product",
             icon: <Pen size={16} />,
           },
           {
-            label: "Products",
+            label: "Listings",
             path: "/dashboard/products",
-            icon: <Package size={16} />,
+            icon: <Building2 size={16} />,
           },
         ]
       : [];

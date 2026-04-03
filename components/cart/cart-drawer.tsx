@@ -1,7 +1,7 @@
 "use client";
 
 import { useCartStore } from "@/lib/client-store";
-import { ShoppingBag } from "lucide-react";
+import { CalendarDays } from "lucide-react";
 import {
   Drawer,
   DrawerContent,
@@ -33,7 +33,7 @@ export default function CartDrawer() {
               </motion.span>
             )}
           </AnimatePresence>
-          <ShoppingBag />
+          <CalendarDays />
         </div>
       </DrawerTrigger>
       <DrawerContent className="fixed bottom-0 left-0 max-h-[70vh] min-h-[50vh]">

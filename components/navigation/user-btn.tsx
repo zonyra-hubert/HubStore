@@ -12,7 +12,7 @@ import {
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { LogOut, Moon, Settings, Sun, TruckIcon } from "lucide-react";
+import { LogOut, MapPin, Moon, Settings, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Switch } from "../ui/switch";
 
@@ -77,11 +77,11 @@ export const UserButton = ({ user }: Session) => {
             onClick={() => router.push("/dashboard/orders")}
             className="group py-2 font-medium cursor-pointer "
           >
-            <TruckIcon
+            <MapPin
               size={14}
               className="mr-3 group-hover:translate-x-1 transition-all duration-300 ease-in-out"
             />{" "}
-            My orders
+            My appointments
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => router.push("/dashboard/settings")}

@@ -83,14 +83,14 @@ export default function ProductForm() {
     },
     onExecute: () => {
       if (editMode) {
-        const toastId = toast.loading("Editing Product");
+        const toastId = toast.loading("Updating listing");
 
         setTimeout(() => {
           toast.dismiss(toastId);
         }, 3000);
       }
       if (!editMode) {
-        const toastId = toast.loading("Creating Product");
+        const toastId = toast.loading("Creating listing");
 
         setTimeout(() => {
           toast.dismiss(toastId);
@@ -105,12 +105,12 @@ export default function ProductForm() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{editMode ? "Edit Product" : "Create product"}</CardTitle>
+        <CardTitle>{editMode ? "Edit Listing" : "Create listing"}</CardTitle>
         <CardDescription>
           {" "}
           {editMode
-            ? "Make changes to existing product"
-            : "Create a new product"}
+            ? "Make changes to an existing listing"
+            : "Create a new rental listing"}
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -121,9 +121,12 @@ export default function ProductForm() {
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Product Title</FormLabel>
+                  <FormLabel>Listing Title</FormLabel>
                   <FormControl>
-                    <Input placeholder="iPhone 16 " {...field} />
+                    <Input
+                      placeholder="Sunrise Hostel - 2 Bed Room"
+                      {...field}
+                    />
                   </FormControl>
 
                   <FormMessage />
@@ -151,14 +154,14 @@ export default function ProductForm() {
               name="price"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Price</FormLabel>
+                  <FormLabel>Starting From</FormLabel>
                   <FormControl>
                     <div className="flex items-center gap-2">
                       <CediIcon />
                       <Input
                         {...field}
                         type="number"
-                        placeholder="Your price in USD"
+                        placeholder="Starting from amount"
                         step={0.01}
                         min={0}
                         className="pl-10"
@@ -179,7 +182,7 @@ export default function ProductForm() {
               }
               type="submit"
             >
-              {editMode ? "Save Changes" : "Create product"}
+              {editMode ? "Save Changes" : "Create listing"}
             </Button>
           </form>
         </Form>

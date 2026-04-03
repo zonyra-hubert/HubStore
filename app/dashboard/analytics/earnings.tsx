@@ -41,7 +41,7 @@ const Earnings = ({ totalOrders }: { totalOrders: TotalOrders[] }) => {
     if (filter === "month") {
       return monthlyChart(chartItems).reduce(
         (acc, item) => acc + item.revenue,
-        0
+        0,
       );
     }
     return weeklyChart(chartItems).reduce((acc, item) => acc + item.revenue, 0);
@@ -49,13 +49,13 @@ const Earnings = ({ totalOrders }: { totalOrders: TotalOrders[] }) => {
   return (
     <Card className="flex-1 shrink-0 h-full">
       <CardHeader>
-        <CardTitle>Your Revenue: ${activeTotal}</CardTitle>
-        <CardDescription>Here are your recent earnings </CardDescription>
+        <CardTitle>Appointment Activity: ${activeTotal}</CardTitle>
+        <CardDescription>Here are your recent booking trends </CardDescription>
         <div className="flex items-center gap-2">
           <Badge
             className={cn(
               "cursor-pointer dark:text-white",
-              filter === "week" ? "bg-primary" : "bg-primary/25"
+              filter === "week" ? "bg-primary" : "bg-primary/25",
             )}
             onClick={() =>
               router.push("/dashboard/analytics/?filter=week", {
@@ -68,7 +68,7 @@ const Earnings = ({ totalOrders }: { totalOrders: TotalOrders[] }) => {
           <Badge
             className={cn(
               "cursor-pointer dark:text-white",
-              filter === "month" ? "bg-primary" : "bg-primary/25"
+              filter === "month" ? "bg-primary" : "bg-primary/25",
             )}
             onClick={() =>
               router.push("/dashboard/analytics/?filter=month", {
@@ -92,7 +92,7 @@ const Earnings = ({ totalOrders }: { totalOrders: TotalOrders[] }) => {
                           className="bg-primary py02 px-2 rounded-md shadow-lg"
                           key={item.payload.date}
                         >
-                          <p> Revenue: {item.value}</p>
+                          <p> Bookings: {item.value}</p>
                           <p>Date: {item.payload.date}</p>
                         </div>
                       );

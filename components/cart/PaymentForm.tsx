@@ -99,13 +99,17 @@ const PaymentForm = ({ totalPrice }: { totalPrice: number }) => {
   return (
     <Suspense fallback={<LoadingSpinner />}>
       <form onSubmit={handleSubmit}>
+        <p className="mb-4 rounded-md border bg-muted/30 p-4 text-sm">
+          No payment needed — visit the property and contact them directly to
+          confirm your stay.
+        </p>
         <PaymentElement />
         <AddressElement options={{ mode: "shipping" }} />
         <Button
           className="max-w-mf my-4 w-full"
           disabled={!stripe || !elements || isLoading}
         >
-          {isLoading ? "Processing..." : "Pay now"}
+          {isLoading ? "Processing..." : "Confirm Appointment"}
         </Button>
       </form>
     </Suspense>
