@@ -10,11 +10,12 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  // 1. Load the base Next.js and TS configs
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 
+  // 2. Define global rules (applies to all files)
   {
     rules: {
-      // General rules
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-unused-vars": [
         "warn",
@@ -27,26 +28,26 @@ const eslintConfig = [
       "react-hooks/exhaustive-deps": "warn",
       "@typescript-eslint/no-empty-interface": "warn",
     },
-    overrides: [
-      {
-        files: ["app/api/stripe/route.ts"],
-        rules: {
-          "@typescript-eslint/no-explicit-any": "off",
-        },
-      },
-      {
-        files: ["app/api/uploadthing/core.ts"],
-        rules: {
-          "@typescript-eslint/no-unused-vars": "off",
-        },
-      },
-      {
-        files: ["**/components/ui/**/*.tsx"],
-        rules: {
-          "@typescript-eslint/no-empty-interface": "off",
-        },
-      },
-    ],
+  },
+
+  // 3. Individual "Override" objects (no 'overrides' key needed)
+  {
+    files: ["app/api/stripe/route.ts"],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+    },
+  },
+  {
+    files: ["app/api/uploadthing/core.ts"],
+    rules: {
+      "@typescript-eslint/no-unused-vars": "off",
+    },
+  },
+  {
+    files: ["**/components/ui/**/*.tsx"],
+    rules: {
+      "@typescript-eslint/no-empty-interface": "off",
+    },
   },
 ];
 
